@@ -68,25 +68,64 @@ Node* reverseKGroups(Node* head, int k){
 }
 
 int main(){
-    Node* node1 = new Node(1);
-    node1->next = new Node(2);
-    node1->next->next = new Node(3);
-    node1->next->next->next = new Node(4);
-    node1->next->next->next->next = new Node(5);
+    int n;
+    cout << "Enter the number of nodes : " << endl;
+    cin >> n;
+
+    Node* head = NULL;
+    Node* tail = NULL;
+
+    cout << "Enter node values : " << endl;
+    
+    for(int i=0; i<n; i++){
+        int data;
+        cin >> data;
+
+        Node* newNode = new Node(data);
+
+        if(head == NULL){
+            head = newNode;
+            tail = newNode;
+        }
+        else{
+            tail->next = newNode;
+            tail = newNode;
+        }
+    }
 
     int k;
     cout << "Enter the size of groups : " << endl;
     cin >> k;
 
     cout << "Original List : " << endl;
-    printList(node1);
+    printList(head);
 
-    node1 = reverseKGroups(node1, k);
+    head = reverseKGroups(head, k);
 
     cout << "Reversed List : " << endl;
-    printList(node1);
+    printList(head);
 
     return 0;
+
+    // Node* node1 = new Node(1);
+    // node1->next = new Node(2);
+    // node1->next->next = new Node(3);
+    // node1->next->next->next = new Node(4);
+    // node1->next->next->next->next = new Node(5);
+
+    // int k;
+    // cout << "Enter the size of groups : " << endl;
+    // cin >> k;
+
+    // cout << "Original List : " << endl;
+    // printList(node1);
+
+    // node1 = reverseKGroups(node1, k);
+
+    // cout << "Reversed List : " << endl;
+    // printList(node1);
+
+    // return 0;
 }
 
 
