@@ -9,7 +9,7 @@ bool isSafe(int x, int y, int n, vector<vector<int>> visited, vector<vector<int>
         return false;
     }
 }
-  
+
 void solve(vector<vector<int>> &maze, int n, vector<string> &ans, int x, int y, 
     vector<vector<int>> visited, string path){
     //you have visited x, y here
@@ -82,17 +82,19 @@ vector<string> ratInMaze(vector<vector<int>>& maze) {
     string path = "";
         
     solve(maze, n, ans, srcx, srcy, visited, path);
-    sort(ans.begin(), ans.end());
+    
+    sort(ans.begin(), ans.end());   // for lexicographically sorted answer
         
     return ans;
 };
 
 int main(){
     int n;
+    cout << "Enter the size of maze : " << endl;
     cin >> n;
 
     vector<vector<int>> maze(n, vector<int>(n));
-
+    cout << "Enter the maze elements : " << endl;
     for(int i=0; i<n; i++){
         for(int j=0; j<n; j++){
             cin >> maze[i][j];
@@ -102,8 +104,17 @@ int main(){
     vector<string> ans = ratInMaze(maze);
 
     for(int i=0; i<(int)ans.size(); i++){
-        cout << ans[i] << " ";
+        cout << "[ " <<  ans[i] << " ]";
     }
 
     return 0;
 }
+
+
+
+// Output ->
+// Enter the size of maze : 
+// 4
+// Enter the maze elements : 
+// 1 0 0 0 1 1 0 1 1 1 0 0 0 1 1 1
+// [ DDRDRR ][ DRDDRR ]
